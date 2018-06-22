@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Kolko i krzyzyk</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <div id="container">
+            <div id="title" >Kółko i krzyżyk</div>
+            <div id="options-container">
+                <form class="form" id="option-form">
+                    <div>
+                        <label>Wybierz swój znak:</label><br>
+                        <input id="radio-1" class="radio-custom" type="radio" name="sign" value="o" required>
+                        <label for="radio-1" class="radio-custom-label" id="radio-1-label">kólko</label>
+                        <input id="radio-2" class="radio-custom" type="radio" name="sign" value="x" required>
+                        <label for="radio-2" class="radio-custom-label" id="radio-2-label">krzyżyk</label>
+                    </div>
+                    <div>
+                        <label class="inputName-custom-label" for="inputName1">Podaj swoje imię:</label>
+                        <input class="inputName-custom" id="inputName1" type="text" pattern="[a-z0-9]" autocomplete="off" required>
+                    </div>
+                    <div>
+                        <label class="inputName-custom-label" for="inputName2">Podaj imię przeciwnika:</label>
+                        <input class="inputName-custom" id="inputName2" type="text" pattern="[a-z0-9]" autocomplete="off" required>
+                    </div>
+                    <div>
+                        <label class="inputName-custom-label" for="numberOfRounds">Podaj liczbę rund:</label>
+                        <input class="inputName-custom" id="numberOfRounds" type="text" pattern="\b[1-9]\b" autocomplete="off" placeholder="min: 1 max: 9" required>
+                    </div>
+                    <div id="submitBtn-container">
+                    <input id="submitBtn" type="submit" value="Zatwierdź" />
+                    </div>
+                </form>
+            </div>
+            <div id="board-container">
+                    <table id="board">
+                        <tr id="row_1">
+                            <td id="field_0"></td><td id="field_1"></td><td id="field_2"></td>
+                        </tr>
+                        <tr id="row_2">
+                            <td id="field_3"></td><td id="field_4"></td> <td id="field_5"></td>
+                        </tr>
+                        <tr id="row_3">
+                            <td id="field_6"></td><td id="field_7"></td> <td id="field_8"></td>
+                        </tr>
+                    </table>
+                <div id="info">Ruch przeciwnika</div>
+<!--                <div id="resetBtn-container">
+                    <button id="resetBtn">Reset</button>
+                </div>-->
+            </div>
+            <div id="ranking-container">
+                <label for="searchPlayer" id="searchPlayer-label"></label>
+                <input type="text" id="searchPlayer" class="inputName-custom" placeholder="szukaj gracza">                
+                <table>
+                    <thead>
+                        <tr><th>Imię gracza:</th><th>Rundy</th><th>Wygrane</th><th>Przegrane</th><th>Remisy</th></tr>
+                    </thead>
+                    <tfoot>   
+                    </tfoot>
+                    <tbody>                       
+                    </tbody>
+                </table>
+                <button id="loadLocalStorage">Wczytaj local storage</button>
+                <button id="clearLocalStorage">Wyczyść local storage</button>
+            </div>
+        </div>
+        <!--<script type="module" src="js/script.js"></script>-->        
+        <script src="dist/bundle.js"></script> 
+    </body>
+</html>

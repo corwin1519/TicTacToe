@@ -1,0 +1,468 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2018-05-31, 12:45:43
+    Author     : Y720
+*/
+
+/*Czcionka*/
+@font-face {
+    font-family: DJBChalkItUp;
+    src: url(../fonts/DJBChalkItUp.ttf);
+}
+
+
+/*RWD*/
+@media all and (max-width: 1024px){
+    
+    #container{
+        grid-template-rows: 5% auto auto auto;
+        grid-template-areas:
+            "title"
+            "options-container"
+            "board-container"
+            "ranking-container";
+    }
+    
+    #board-container{
+       grid-template-rows: 10% auto;
+    }
+    
+    #board{
+        align-self: flex-end;
+    }
+    
+    #option-form div:nth-child(2) input{
+        margin-top: 0.25vh;        
+    }
+    
+    .inputName-custom, .inputName-custom-label{
+        display: inline-block !important;
+    }
+
+   
+}
+
+@media all and (min-width: 1025px){
+    
+    #container{
+        grid-template-columns: 25% 45% 30%;
+        grid-template-rows: 5% auto;       
+        grid-template-areas:
+            "title title title"
+            "options-container board-container ranking-container";
+    }
+    
+    #board-container{
+        grid-template-rows: 10% auto;
+    }
+    
+    #board{
+        align-self: flex-start;
+    }
+}
+
+
+
+*{
+    box-sizing: border-box;
+    
+}
+
+html{
+    font-size: 12px;    
+}
+
+html, body{
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: DJBChalkItUp;
+}
+
+#container{
+    display: grid;
+    grid-gap: 10px;
+    
+    background-image: url("../img/chalkboard.jpg");
+    background-repeat: no-repeat;
+    
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    
+}
+
+#board-container{
+    grid-area: board-container;
+    font-size: 3rem;
+    /*border: 1px solid red;*/
+    display:grid;  
+    
+}
+
+#title{
+    grid-area: title;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    
+    width: 100%;
+    height: 100%;
+   
+    font-family: DJBChalkItUp;
+    color:red;
+    font-size: 4vh; 
+    padding: 0.5vh 0;
+    
+    border-image: url("../img/chalkLine1.png");
+    border-image-slice: 76 80 64 72 fill; 
+    border-image-width: 0 0 10px 0; 
+    border-image-outset: 5px;
+    border-image-repeat: round;
+
+}
+
+#board-container #board{
+
+    justify-self: center;
+    border: none;
+    padding: 5px;
+    width: 40vw;
+    height:40vw;
+    color:white;
+    border-color: #F3F2F2;
+    border-spacing: 0px;
+    font-size: 8vw;
+}
+
+
+#info{
+    grid-row: 1;
+    display: flex;
+    align-self: flex-start;
+    justify-self: center;
+    text-align: center;
+    font-size: 4vh;
+}
+
+
+/* rysowanie planszy */
+#board tr td:first-child{
+    border-left: none;
+}
+
+#board tr td:last-child{
+    border-right: none;
+}
+
+#board tr:first-child td{
+    border-top: none;
+}
+
+#board tr:last-child td{
+    border-bottom: none;
+}
+
+#board tr{
+
+    /*line-height: 10rem;*/
+}
+
+#board tr td{
+    /*border: 3px solid #F3F2F2;*/
+    text-align: center;
+    width: 33%;
+    height: 33%;
+    font-family: DJBChalkItUp;
+    transition: 0.2s;
+    cursor: pointer;
+
+    
+}
+
+#options-container{
+    grid-area: options-container;
+    
+    /*border: 1px solid blue;*/
+    color: #F3F2F2;
+    font-size: 3vh;
+    text-align: left;
+}
+
+#option-form{
+    margin-left: 15px;
+}
+
+
+
+/*Stylowanie radio buttonów*/
+/*********************************************/
+
+/* ukrycie domyślnych znacznikow */
+.radio-custom {
+    opacity: 0;
+    position: absolute;   
+}
+
+.radio-custom, .radio-custom-label {
+    display: block;
+    vertical-align: middle;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.radio-custom-label {
+    position: relative;
+    font-family: DJBChalkItUp;
+}
+
+#radio-1-label, #radio-2-label{
+    display: inline-block;
+}
+
+#radio-1-label::before{
+    content: "O";
+    font-weight: 200;
+    margin: 10px;
+   
+}
+
+#radio-2-label::before{
+    content: "X";
+    font-weight: 700;
+    margin: 10px;
+   
+}
+
+
+
+/*ramka wokol zaznaczonej opcji*/
+.radio-custom:checked + .radio-custom-label{
+    /*color: blue;*/
+    border: 10px solid red;
+    margin: 0px;
+    border-image: url("../img/chalkLine1.png");
+    border-image-slice: 76 80 64 72 fill; 
+    border-image-width: 10px 10px 10px 10px;
+    border-image-outset: 0px;
+    border-image-repeat: round round;
+
+}
+
+/* Stylowanie planszy */
+#field_1{
+    border-image: url("../img/chalkLine3.png");
+    border-image-slice: 76 80 64 72 fill; 
+    /*border-image-width: 0px 40px;*/ 
+    border-image-width: 0 2vw; 
+    border-image-outset: 1px 1px;
+    border-image-repeat: round round;
+}
+
+#field_4{
+    border-image: url("../img/chalkLine3.png");
+    border-image-slice: 76 80 64 72 fill; 
+    border-image-width: 2vw; 
+    /*border-image-width: 40px;*/     
+    border-image-outset: 2px 2px;
+    border-image-repeat: round;
+}
+
+#field_7{
+    border-image: url("../img/chalkLine3.png");
+    border-image-slice: 76 80 64 72 fill; 
+    /*border-image-width: 0px 40px;*/ 
+    border-image-width: 0 2vw; 
+    border-image-outset: 1px 1px;
+    border-image-repeat: round round;
+}
+
+#field_3{
+    border-image: url("../img/chalkLine3.png");
+    border-image-slice: 76 80 64 72 fill; 
+/*    border-image-width: 40px 0; */
+    border-image-width: 2vw 0; 
+    border-image-outset: 1px 1px;
+    border-image-repeat: round round;
+}
+
+#field_5{
+    border-image: url("../img/chalkLine3.png");
+    border-image-slice: 76 80 64 72 fill; 
+/*    border-image-width: 40px 0; */
+    border-image-width: 2vw 0; 
+    border-image-outset: 1px 1px;
+    border-image-repeat: round round;
+}
+
+/*Stylowanie pola z imieniem*/
+.inputName-custom, .inputName-custom-label{
+    background: transparent;
+    border: none;
+    font-family: DJBChalkItUp;
+    color: #F3F2F2;
+    font-size: inherit;
+    cursor: pointer;
+    margin-top: 20px;
+    display:block;
+
+}
+
+/* podkreslenie labeli */
+.inputName-custom-label{
+    border-image: url("../img/chalkLine1.png");
+    border-image-slice: 76 80 64 72 fill; 
+    border-image-width: 0 0 10px 0; 
+    border-image-outset: 5px;
+    border-image-repeat: round;
+}
+
+#option-form div:first-child label:first-child{
+    border-image: url("../img/chalkLine1.png");
+    border-image-slice: 76 80 64 72 fill; 
+    border-image-width: 0 0 10px 0; 
+    border-image-outset: 5px;
+    border-image-repeat: round;
+};
+
+
+.inputName-custom{
+    margin-left: 15px;
+}
+
+/* ramka do wpisania imion */
+input[type="text"]:focus{
+    border-image: url("../img/chalkLine1.png");
+    border-image-slice: 76 80 64 72 fill; 
+    border-image-width: 10px; 
+    border-image-outset: 10px;
+    border-image-repeat: round round;
+    outline-width: 0;
+    transition: 0.2s;
+}
+
+
+
+input[type="text"]:blur{
+
+    transition: 0.2s;
+}
+
+/*błędy w formularzu*/
+.form .error label:not(#radio-1-label):not(#radio-2-label),
+.form .error span
+{
+    color: red;
+}
+
+
+.form .error input[type='text']::after{
+    content: "!dhfksjdfhgkdfjhgdkjfh";    
+}
+
+/* nieaktywny formularz */
+
+
+
+#resetBtn-container,
+#submitBtn-container{
+
+    width: 10rem;
+    background-image: url("../img/chalkLine4.png");
+    background-size: cover;
+    text-align: center;
+}
+
+/*stylowanie przyciskow */
+#resetBtn,
+#submitBtn
+{
+    border: none;
+    margin: 2px;
+    padding: 1px;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: #2c2a2b;
+    font-family: DJBChalkItUp;
+    font-size: inherit;
+    font-weight: 900;
+    text-align: center;
+    width: 10rem;
+    z-index: 10;
+    outline: none;
+    
+}
+
+#options-container .disabled{
+    color: #636663;
+    transition: 0.2s;
+}
+
+
+/*#resetBtn-container:hover #resetBtn{
+    filter: blur(1px);
+}
+
+#resetBtn-container:hover{
+    filter: blur(1px);
+    transition: 0.15s;
+}
+
+#resetBtn:active{
+    opacity: 0.2;
+    transition: 0.1s;
+}*/
+
+
+#submitBtn-container:hover #submitBtn{
+    filter: blur(1px);
+}
+
+#submitBtn:active{
+    opacity: 0.2;
+    transition: 0.1s;
+}
+
+
+/*ranking stylowanie tabeli*/
+#ranking-container{
+    grid-area: ranking-container;
+    
+    color: #F3F2F2;
+    font-size: 1.3rem;
+  
+}
+
+#ranking-container table{
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#ranking-container table th{
+    border: 2px solid #F3F2F2;
+}
+
+#ranking-container table td{
+    border: 1px solid #F3F2F2;
+    text-align: center;
+}
+
+#searchPlayer{
+    font-size: inherit;    
+    border-image-outset: 10px 10px 10px 30px;
+    display: inline-block;
+}
+
+
+#searchPlayer-label::before{
+    content: "\f002";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: gray;
+}
